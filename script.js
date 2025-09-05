@@ -116,5 +116,9 @@ notesContainer.addEventListener('mouseout', (event) => {
     }
 });
 
+notesContainer.addEventListener('mouseout',
+
+)
+
 setInitialTheme();
 loadNotes();
