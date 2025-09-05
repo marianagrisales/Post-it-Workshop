@@ -3,8 +3,10 @@ const addButton = document.getElementById('add-note-button');
 const notesContainer = document.getElementById('notes-container');
 const toggleThemeButton = document.getElementById('toggle-theme-button');
 const body = document.body;
-const colors = ['note-yellow'];
+// Paleta de colores para las notas (clases CSS)
+const colors = ['note-yellow','note-pink','note-blue','note-red','note orange',];
 
+// Crear elemento de nota con texto y clase de color 
 function createNoteElement(text, colorClass) {
     const noteDiv = document.createElement('div');
     noteDiv.classList.add('note', colorClass); 
@@ -18,8 +20,10 @@ function createNoteElement(text, colorClass) {
     return noteDiv;
 }
 
+// Guardar notas en el localStorage
 function loadNotes() {
     const storedNotes = [];
+    // Recorremos todas las notas en el contenedor
     console.log(storedNotes);
     if (storedNotes) {
         const notes = JSON.parse(storedNotes);
@@ -30,11 +34,16 @@ function loadNotes() {
     }
 }
 
+
+// Establecer tema inicial segun localStorage
 function setInitialTheme() {
     const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
     if (isDarkMode) {
         body.classList.add('dark-mode');
+        body.classList.add('dark-mode');
         toggleThemeButton.textContent = 'Modo Claro';
+        } else {
+            toggleThemeButton.textContent = 'Modo Oscuro';
     }
 }
 
@@ -116,9 +125,6 @@ notesContainer.addEventListener('mouseout', (event) => {
     }
 });
 
-notesContainer.addEventListener('mouseout',
-
-)
 
 setInitialTheme();
 loadNotes();
