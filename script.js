@@ -47,10 +47,12 @@ function setInitialTheme() {
     }
 }
 
+// Habilitar o desabilitar boton de agregar
 noteInput.addEventListener('input', () => {
     addButton.disabled = noteInput.value.trim() === '';
 });
 
+// Toggle tema oscuro
 toggleThemeButton.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     const isDarkMode = body.classList.contains('dark-mode');
@@ -58,9 +60,10 @@ toggleThemeButton.addEventListener('click', () => {
     toggleThemeButton.textContent = isDarkMode ? 'Modo Claro' : 'Modo Oscuro';
 });
 
+// Editar nota con doble click
 notesContainer.addEventListener('dblclick', (event) => {
     const target = event.target;
-    if (target.classList.contains('note')) {
+    if (target.classList.contains('note') && !target.classList.contains('editing'))
         const currentText = target.textContent.slice(0, -1);
         target.textContent = '';
         target.classList.add('editing');
